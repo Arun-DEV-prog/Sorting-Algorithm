@@ -3,47 +3,45 @@
 #include <algorithm>
 using namespace std;
 
-void slove()
+void selection_sort()
 {
     int n;
     cin >> n;
     vector<int> arr(n);
+
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
 
-    //    Sorting process
+    // sorting part
     for (int i = 0; i < n - 1; i++)
     {
-        bool isSwap = false;
-        for (int j = 0; j < n - i - 1; j++)
+        int smallestIdx = i;
+        for (int j = i + 1; j < n; j++)
         {
-            if (arr[j] > arr[j + 1])
+            if (arr[j] < arr[smallestIdx])
             {
-                swap(arr[j], arr[j + 1]);
-                isSwap = true;
+                smallestIdx = j;
             }
         }
-        if (!isSwap)
-        {
-            return;
-        }
+        swap(arr[i], arr[smallestIdx]);
     }
+
+    // print the sorted array
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
-    cout << endl;
 }
 
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int tt;
+    cin >> tt;
+    while (tt--)
     {
+        selection_sort();
         /* code */
-        slove();
     }
 }
